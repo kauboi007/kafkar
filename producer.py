@@ -2,7 +2,7 @@ import json
 import uuid
 from confluent_kafka import Producer
 
-config={'bootstrap.servers':'localhost:9092'}
+config={'bootstrap.servers':'broker:9092'}
 
 producer=Producer(config)
 
@@ -11,6 +11,7 @@ def feedback(err,msg):
         print(f"error:{err}")
     else:
         print(f"succesful:{msg.value().decode('utf-8')}")
+        print(f"Topic: {msg.topic()} Offset: {msg.offset()} Partition: {msg.partition()}")
 
 order={
     "orderid":str(uuid.uuid4()),
