@@ -15,9 +15,9 @@ def feedback(err,msg):
 
 order={
     "orderid":str(uuid.uuid4()),
-    "user":"kau",
-    "item":"pizza",
-    "quantity":1
+    "user":"shobi",
+    "item":"burger",
+    "quantity":2
 }
 
 value=json.dumps(order).encode('utf-8')
