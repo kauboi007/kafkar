@@ -1,8 +1,9 @@
 import json
 import uuid
 from confluent_kafka import Producer
+import os
+config = {'bootstrap.servers': os.environ.get('BOOTSTRAP_SERVERS', 'broker:9092')}
 
-config={'bootstrap.servers':'broker:9092'}
 
 producer=Producer(config)
 

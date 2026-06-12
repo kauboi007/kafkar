@@ -1,9 +1,9 @@
 import json
-
+import os
 from confluent_kafka import Consumer
 
 config={
-    "bootstrap.servers":"broker:9092",
+    'bootstrap.servers': os.environ.get('BOOTSTRAP_SERVERS', 'broker:9092'),
     "group.id":"myorder-tracker",
     "auto.offset.reset":"earliest"
 }

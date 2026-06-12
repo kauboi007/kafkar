@@ -19,7 +19,24 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
     volumes:
       - kafka_kraft:/var/lib/kafka/data
+
+  producer:
+    build: .
+    container_name: producer
+    depends_on:
+      - broker
+    environment:
+      BOOTSTRAP_SERVERS: broker:9092
+    command: python producer.py
+
+  tracker:
+    build: .
+    container_name: tracker
+    depends_on:
+      - broker
+    environment:
+      BOOTSTRAP_SERVERS: broker:9092
+    command: python tracker.py
+
 volumes:
   kafka_kraft:
-    
-      
